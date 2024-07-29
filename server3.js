@@ -16,7 +16,7 @@ MongoClient.connect(mongoURL)
     const databaseCollection = db.collection("quotes");
 
     // Serve static files from the 'style' directory
-    app.use(express.static(path.join(__dirname, "style")));
+    
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Serve the index.html file and handle database queries
@@ -48,10 +48,16 @@ MongoClient.connect(mongoURL)
         });
     });
 
+      
     // Start the server
     app.listen(PORT, () => {
       console.log(`Testing on http://localhost:${PORT}`);
     });
+    
+    
+    // Serve static files from the 'style' directory
+    app.use(express.static(path.join(__dirname, "style")));
+    
 
   })
   .catch(error => {
